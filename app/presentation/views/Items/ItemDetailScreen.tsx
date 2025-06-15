@@ -8,6 +8,7 @@ import {View, Text, ActivityIndicator, FlatList, Image} from "react-native";
 import { ItemInterface } from "../../../domain/entitities/Item";
 import styles from "./Styles";
 import stylesItem from "./Styles";
+import stylesDetails from "./ItemDetailsStyles";
 
 type ItemDetailScreenNavigationProp = DrawerNavigationProp<RootStackParamList>;
 type ItemDetailRouteProp = RouteProp<RootStackParamList, "ItemDetail">;
@@ -83,37 +84,43 @@ function ItemDetailScreen() {
                 screenTitle={item.nombre}
                 method={() => navigation.goBack()}
             />
-            <View style={{ padding: 16 }}>
-                <Text>Precio: ${item.precio?.toFixed(2) ?? "N/A"}</Text>
-                <Text>Tipo: {item.tipoNombre?.toString() ?? "N/A"}</Text>
-                <Text>Outfit: {item.outfitNombre?.toString() ?? "N/A"}</Text>
-                <View style={{ padding: 5 }}>
-                    { item.image && (
-                        <Image
-                            source={{ uri: item.image }}
-                            style={{
-                                width: "100%",
-                                height: 200,
-                                resizeMode: "contain",
-                                marginBottom: 16,
-                                borderRadius: 8,
-                            }}
-                        />
-                    )}
-
+            <View style={stylesDetails.body}>
+                <View style={stylesDetails.imageContainer}>
+                    <Image
+                        source={{ uri: item.image }}
+                        style={{
+                            width: "100%",
+                            aspectRatio: 1,
+                            borderRadius: 8,
+                        }}
+                    />
+                </View>
+                <View style={stylesDetails.dataRow}>
+                    <Text style={stylesDetails.dataText}>
+                        Category: {item.tipoNombre}
+                    </Text>
+                    <Text style={stylesDetails.priceText}>
+                        $ {item.precio?.toFixed(2) ?? "N/A"}
+                    </Text>
+                </View>
+                {item.outfitNombre && (
+                    <Text style={stylesDetails.dataText}>
+                        Outfit: {item.outfitNombre.toString()}
+                    </Text>
+                )}
+                <View style={stylesDetails.materials}>
+                    <Text style={stylesDetails.dataText}>Materiales:</Text>
+                    <FlatList
+                        data={item.materiales}
+                        renderItem={({ item: mat }) => (
+                            <View style={stylesDetails.materialContainer}>
+                                <Text style={stylesDetails.materialDataText}>{mat.materialNombre}</Text>
+                                <Text style={stylesDetails.materialDataText}>{mat.cantidad}</Text>
+                            </View>
+                        )}
+                    />
                 </View>
 
-                <Text style={[{ marginTop: 16 }]}>Materiales:</Text>
-                <FlatList
-                    data={item.materiales}
-                    keyExtractor={(mat) => mat.materialId.toString()}
-                    renderItem={({ item: mat }) => (
-                        <View style={{ flexDirection: "row", justifyContent: "space-between", paddingVertical: 8 }}>
-                            <Text>{mat.materialNombre}</Text>
-                            <Text>Cantidad: {mat.cantidad}</Text>
-                        </View>
-                    )}
-                />
             </View>
         </View>
     );

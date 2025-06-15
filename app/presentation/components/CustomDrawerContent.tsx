@@ -32,7 +32,11 @@ const CustomDrawerContent = (props)=>{
                                     source={item.iconPath}
                                     style={styles.iconNavbar}
                                 />
-                                <Text style={{color: colors.textDefault}}>{item.title}</Text>
+                                <Text style={{
+                                    color: colors.textDefault
+                                }}>
+                                    {item.title}
+                                </Text>
                             </View>
                             {menuIndex === index && <View style={{borderRadius: constant.borderRadius}} >
                                 {item.menuList.map((sumMenu, index) => (
@@ -42,7 +46,9 @@ const CustomDrawerContent = (props)=>{
                                         >
                                             <View style={styles.subMenu}>
                                                 <Text
-                                                    style={{color: colors.textDefault}}
+                                                    style={{
+                                                        color: colors.textDefault,
+                                                }}
                                                 >{sumMenu.title}</Text>
                                             </View>
                                         </TouchableNativeFeedback>

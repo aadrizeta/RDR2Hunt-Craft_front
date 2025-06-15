@@ -10,7 +10,7 @@ const Header = ({ imageSource, screenTitle, method }) => {
             </TouchableOpacity>
 
             <View style={styles.titleWrapper}>
-                <Text style={styles.title}>{screenTitle}</Text>
+                <Text style={styles.title} numberOfLines={2}>{screenTitle}</Text>
             </View>
         </View>
     );
@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
     },
     titleWrapper: {
         position: 'absolute',
-        left: 0,
-        right: 0,
+        left: 60,
+        right: 60,
         alignItems: 'center',
     },
     title: {

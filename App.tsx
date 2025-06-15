@@ -26,7 +26,11 @@ export default function App() {
     useEffect(() => {
         if (!fontsLoaded){
             Font.loadAsync({
-                'RDR2Font': require('./assets/fonts/chineserocksfree.ttf')
+                'RDR2Font': require('./assets/fonts/chineserocksfree.ttf'),
+                'UIFontDefault': require('./assets/fonts/droid-serif.regular.ttf'),
+                'UIFontBold': require('./assets/fonts/droid-serif.bold.ttf'),
+                'UIFontItalic': require('./assets/fonts/droid-serif.italic.ttf'),
+                'UIFontItalicBold': require('./assets/fonts/droid-serif.bold-italic.ttf'),
             })
         }
     });

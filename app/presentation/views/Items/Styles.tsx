@@ -8,6 +8,9 @@ const stylesItem = StyleSheet.create({
     },
     scrollView :{
         marginHorizontal: 20
+    },
+    text: {
+        color: colors.textDefault,
     }
 
 })
