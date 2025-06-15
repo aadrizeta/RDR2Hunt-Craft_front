@@ -3,15 +3,21 @@ export interface ItemInterface {
     id: number;
     nombre: string;
     precio: number;
-    id_tipo: number;
-    id_outfit: number;
-    tipo: TipoInterface;
-    outfit?: OutfitInterface;
-    materiales: ItemMaterialInterface[];
+    image: string;
+    tipoId?: number | null;          // nullable, según backend
+    tipoNombre?: string | null;
+    outfitId?: number | null;
+    outfitNombre?: string | null;
+    materiales: ItemMaterialSimpleInterface[];
 }
 export interface MaterialInterface{
     id: number;
     nombre: string;
+}
+export interface ItemMaterialSimpleInterface {
+    materialId: number;
+    materialNombre: string;
+    cantidad: number;
 }
 export interface ItemMaterialInterface{
     id: number;

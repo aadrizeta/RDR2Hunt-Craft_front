@@ -101,4 +101,17 @@ export class ItemRepositoryImpl implements ItemRepository{
         }
     }
 
+    async getItemDetailsById(idItem: number): Promise<ItemInterface> {
+        try {
+            const response = await ApiDelivery.get(`/items/details/${idItem}`)
+            return response.data as ItemInterface;
+
+        }catch (error: any) {
+            console.log("Error en getItemById:", error?.response?.data || error?.message || error);
+            throw error;
+        }
+    }
+
+
+
 }

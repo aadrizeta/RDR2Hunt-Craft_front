@@ -39,7 +39,7 @@ export default function App() {
             <Stack.Screen name={"DrawerNavigator"} component={DrawerNavigator}/>
             <Stack.Screen name={"Home"} component={HomeScreen}/>
             <Stack.Screen name={"Items"} component={ItemsScreen}/>
-            <Stack.Screen name="ItemDetail" component={ItemDetailScreen} />
+            <Stack.Screen name={"ItemDetail"} component={ItemDetailScreen} />
         </Stack.Navigator>
     </NavigationContainer>
   );

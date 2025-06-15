@@ -15,4 +15,5 @@ export interface ItemRepository{
     getItemByTipo:(idTipo: number) => Promise<ItemInterface[]>
     getItemByNombre: (nombre: string) => Promise<ItemInterface>;
     getItemById: (idItem: number) => Promise<ItemInterface>;
+    getItemDetailsById: (idItem: number) => Promise<ItemInterface>;
 }
