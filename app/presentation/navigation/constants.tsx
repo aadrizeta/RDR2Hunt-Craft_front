@@ -3,6 +3,7 @@ import {ImageSourcePropType} from "react-native";
 import {FC} from "react";
 import OutfitScreen from "../views/Outfits/OutfitScreen";
 import Favorites from "../views/favorites/Favorites";
+import MaterialsScreen from "../views/Materials/MaterialsScreen";
 
 
 export const constant = {
@@ -33,6 +34,12 @@ export const ScreensArray:ScreenItem[] = [
         label: "Outfits",
         iconPath: require("../../../assets/icons/outfit_icon.png"), // Icono de Outfits
         component: OutfitScreen,
+    },
+    {
+        route: "Materials",
+        label: "Materials",
+        iconPath: require("../../../assets/icons/materials.png"), // Icono de Outfits
+        component: MaterialsScreen,
     },
     {
         route: "Favorites",

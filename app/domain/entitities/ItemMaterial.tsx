@@ -1,9 +1,9 @@
 import {ItemInterface} from "./Item";
-import {Material} from "./Material";
+import {MaterialInterface} from "./Material";
 
-export interface ItemMaterial{
+export interface ItemMaterialInterface{
     id: number;
     item: ItemInterface;
-    material: Material;
+    material: MaterialInterface;
     cantidad: number;
 }

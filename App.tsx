@@ -9,6 +9,7 @@ import ItemsScreen from "./app/presentation/views/Items/ItemsScreen";
 import DrawerNavigator from "./app/presentation/navigation/DrawerNavigator";
 import ItemDetailScreen from "./app/presentation/views/Items/ItemDetailScreen";
 import OutfitScreen from "./app/presentation/views/Outfits/OutfitScreen";
+import MaterialsScreen from "./app/presentation/views/Materials/MaterialsScreen";
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
@@ -20,6 +21,7 @@ export type RootStackParamList={
     Outfits: undefined
     ItemTipo: {idTipo: number},
     ItemOutfit: {idOutfit: number},
+    Materials: undefined,
 }
 
 export default function App() {
@@ -46,6 +48,7 @@ export default function App() {
             <Stack.Screen name={"Items"} component={ItemsScreen}/>
             <Stack.Screen name={"ItemDetail"} component={ItemDetailScreen}/>
             <Stack.Screen name={"Outfits"} component={OutfitScreen}/>
+            <Stack.Screen name={"Materials"} component={MaterialsScreen}/>
         </Stack.Navigator>
     </NavigationContainer>
   );

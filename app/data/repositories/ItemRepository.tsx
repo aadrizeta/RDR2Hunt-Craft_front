@@ -3,11 +3,11 @@ import {ApiDelivery} from "../sources/remote/api/ApiDelivery";
 import {ItemRepository} from "../../domain/repositories/ItemRepository";
 import {
     ItemInterface,
-    MaterialInterface,
-    ItemMaterialInterface,
     TipoInterface,
     OutfitInterface,
 } from "../../domain/entitities/Item";
+import {MaterialInterface} from "../../domain/entitities/Material";
+
 
 export class ItemRepositoryImpl implements ItemRepository{
     async getAllItems(): Promise<ItemInterface[]> {
@@ -19,7 +19,6 @@ export class ItemRepositoryImpl implements ItemRepository{
             console.log("Error: " + JSON.stringify(e.response?.data));
             return Promise.resolve(JSON.parse(JSON.stringify(e.response?.data)));
         }
-        return Promise.resolve([]);
     }
 
     async getAllMaterials(): Promise<MaterialInterface[]> {

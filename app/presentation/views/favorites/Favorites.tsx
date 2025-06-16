@@ -2,12 +2,13 @@ import {ActivityIndicator, ScrollView, Text, View} from "react-native";
 import Header from "../../components/Header";
 import {DrawerNavigationProp} from "@react-navigation/drawer";
 import {RootStackParamList} from "../../../../App";
-import {useNavigation} from "@react-navigation/native";
+import {useNavigation, useFocusEffect} from "@react-navigation/native";
 import stylesItem from "../Items/Styles";
 import {ItemRepositoryImpl} from "../../../data/repositories/ItemRepository";
-import {useEffect, useState} from "react";
+import {useEffect, useState, useCallback} from "react";
 import {ItemInterface} from "../../../domain/entitities/Item";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import ItemContainer from "../../components/ItemContainer";
 
 const FAVORITES_KEY = "FAVORITE_ITEMS";
 type OutfitsScreenNavigationProp = DrawerNavigationProp<RootStackParamList, 'DrawerNavigator'>
@@ -18,7 +19,35 @@ function Favorites() {
 
     const itemRepo = new ItemRepositoryImpl()
 
-    useEffect(() => {
+    useFocusEffect(
+        useCallback(() => {
+            const loadFavorites = async () => {
+                try {
+                    const stored = await AsyncStorage.getItem(FAVORITES_KEY);
+                    const ids: number[] = stored ? JSON.parse(stored) : [];
+
+                    if (ids.length === 0) {
+                        setItems([]);
+                        return;
+                    }
+
+                    const itemPromises = ids.map((id) => itemRepo.getItemById(id));
+                    const fetchedItems = await Promise.all(itemPromises);
+
+                    setItems(fetchedItems);
+                    console.log("Favoritos cargados:", fetchedItems);
+                } catch (err) {
+                    console.error("Error cargando favoritos:", err);
+                } finally {
+                    setLoading(false);
+                }
+            };
+            loadFavorites(); // Llamamos la función async desde una función normal
+        }, [])
+    );
+
+
+    /*useEffect(() => {
         const loadFavorites = async () => {
             try {
                 const stored = await AsyncStorage.getItem(FAVORITES_KEY);
@@ -41,7 +70,7 @@ function Favorites() {
             }
         };
         loadFavorites()
-    }, []);
+    }, []);*/
 
     return(
         <View style={stylesItem.main}>
@@ -57,10 +86,16 @@ function Favorites() {
             ) : (
                 <ScrollView contentContainerStyle={{ padding: 16 }}>
                     {items.map((item) => (
-                        <View key={item.id} style={{ marginBottom: 12 }}>
-                            <Text style={stylesItem.text}>{item.nombre}</Text>
-                            {/* Más adelante aquí puedes mostrar imagen, precio, etc */}
-                        </View>
+                        <ItemContainer
+                            key={item.id}
+                            name={item.nombre}
+                            price={item.precio ?? 0}
+                            id={item.id}
+                            onPress={() => navigation.navigate('ItemDetail', {
+                                id_item: item.id,
+                                item_name: item.nombre
+                            })}
+                        />
                     ))}
                 </ScrollView>
             )}

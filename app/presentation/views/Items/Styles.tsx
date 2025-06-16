@@ -4,7 +4,8 @@ import colors from "../../../../assets/colors/colors";
 const stylesItem = StyleSheet.create({
     main: {
         backgroundColor: colors.mainColor,
-        flex: 1
+        flex: 1,
+        paddingBottom:20,
     },
     scrollView :{
         marginHorizontal: 20,
