@@ -24,7 +24,7 @@ const stylesDetails = StyleSheet.create({
     },
     priceText: {
         fontFamily: 'RDR2Font',
-        color: colors.textDefault,
+        color: colors.yellowRDR2,
         fontSize: 30,
         textAlign: "right",
     },
@@ -33,6 +33,7 @@ const stylesDetails = StyleSheet.create({
         fontSize: 20,
         color: colors.textDefault,
         marginVertical: 8,
+        paddingBottom: 5
     },
     dataRow: {
         flexDirection: "row",
@@ -48,7 +49,7 @@ const stylesDetails = StyleSheet.create({
         height: 50,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingVertical: 8,
+        paddingVertical: 10,
         paddingHorizontal: 12,
         backgroundColor: colors.secondaryColor,
         marginVertical: 4,
@@ -57,6 +58,13 @@ const stylesDetails = StyleSheet.create({
     },
     materials: {
         marginVertical: 10
+    },
+    favIcon: {
+        position: "absolute",
+        right: 25,
+        top: 55,
+        width: 30,
+        height: 30,
     }
 })
 

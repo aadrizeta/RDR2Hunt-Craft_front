@@ -5,18 +5,19 @@ import DrawerNavigator from "../../navigation/DrawerNavigator";
 import {useNavigation} from "@react-navigation/native";
 import {Image, Text, TouchableOpacity, View} from "react-native";
 import stylesHome from "../home/StylesHome";
+import stylesItem from "../Items/Styles";
+import Header from "../../components/Header";
 
 type OutfitsScreenNavigationProp = DrawerNavigationProp<RootStackParamList, 'DrawerNavigator'>
 function Outfits(){
     const navigation = useNavigation<OutfitsScreenNavigationProp>()
     return(
-        <View>
-            <TouchableOpacity
-                onPress={()=> navigation.openDrawer()}
-            >
-                <Image source={require('../../../../assets/icons/menu.png')} style={stylesHome.menuIcon}/>
-            </TouchableOpacity>
-            <Text>Pantalla de Outfits</Text>
+        <View style={stylesItem.main}>
+            <Header
+                imageSource={require('../../../../assets/icons/menu.png')}
+                screenTitle={"Outfits"}
+                method={() => navigation.openDrawer()}
+            />
         </View>
     )
 }

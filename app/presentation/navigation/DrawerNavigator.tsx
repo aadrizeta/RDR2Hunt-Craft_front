@@ -21,6 +21,9 @@ const DrawerNavigator = ()=>{
                 drawerActiveBackgroundColor: 'rgba(134,134,134,0.25)',
                 drawerActiveTintColor: colors.textDefault,
                 drawerInactiveTintColor: colors.textDefault,
+                drawerLabelStyle: {
+                    fontFamily: 'UIFontDefault'
+                },
                 drawerStyle:{
                     backgroundColor: colors.drawerColor
                 },

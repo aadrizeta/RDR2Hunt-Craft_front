@@ -4,11 +4,12 @@ import { DrawerNavigationProp } from "@react-navigation/drawer";
 import { RootStackParamList } from "../../../../App";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import { ItemRepositoryImpl } from "../../../data/repositories/ItemRepository";
-import {View, Text, ActivityIndicator, FlatList, Image} from "react-native";
+import {View, Text, ActivityIndicator, FlatList, Image, TouchableOpacity, Platform, ToastAndroid} from "react-native";
 import { ItemInterface } from "../../../domain/entitities/Item";
 import styles from "./Styles";
 import stylesItem from "./Styles";
 import stylesDetails from "./ItemDetailsStyles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type ItemDetailScreenNavigationProp = DrawerNavigationProp<RootStackParamList>;
 type ItemDetailRouteProp = RouteProp<RootStackParamList, "ItemDetail">;
@@ -24,6 +25,72 @@ function ItemDetailScreen() {
     const [item, setItem] = useState<ItemInterface | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [isFav, setIsFav] = useState(false);
+
+    const FAVORITES_KEY = 'FAVORITE_ITEMS';
+    const getFavorites = async (): Promise<number[]> =>{
+        try {
+            const stored = await AsyncStorage.getItem(FAVORITES_KEY);
+            return stored ? JSON.parse(stored) : [];
+
+        } catch (error) {
+            console.error('Error al leer favoritos:', error);
+            return [];
+        }
+    }
+    const saveFavorites = async (favorites: number[]) => {
+        try {
+            await AsyncStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+        } catch (error) {
+            console.error('Error al guardar favoritos:', error);
+        }
+    };
+    // Añadir o eliminar un favorito
+    const toggleFavorite = async (id: number): Promise<boolean> => {
+        const favorites = await getFavorites();
+        const isFav = favorites.includes(id);
+
+        const updated = isFav
+            ? favorites.filter(favId => favId !== id)
+            : [...favorites, id];
+
+        await saveFavorites(updated);
+        return !isFav;
+    };
+
+// Verificar si un ítem es favorito
+    const isFavorite = async (id: number): Promise<boolean> => {
+        const favorites = await getFavorites();
+        return favorites.includes(id);
+    };
+    useEffect(() => {
+        const loadFavoriteStatus = async () => {
+            const fav = await isFavorite(id_item);
+            setIsFav(fav);
+        };
+        loadFavoriteStatus();
+    }, [id_item]);
+
+    const handleToggleFavorite = async () => {
+        const newStatus = await toggleFavorite(id_item);
+        setIsFav(newStatus);
+        const currentFavorites = await getFavorites();
+
+        if (newStatus) {
+            console.log(`Item con ID ${id_item} añadido a favoritos.`);
+            console.log("guardados: ", currentFavorites);
+            if (Platform.OS === "android") {
+                ToastAndroid.show("Añadido a favoritos", ToastAndroid.SHORT);
+            }
+            // Para iOS puedes usar alert o librería externa
+        } else {
+            console.log(`Item con ID ${id_item} eliminado de favoritos.`);
+            console.log("guardados: ", currentFavorites);
+            if (Platform.OS === "android") {
+                ToastAndroid.show("Eliminado de favoritos", ToastAndroid.SHORT);
+            }
+        }
+    };
 
     useEffect(() => {
         const fetchItem = async () => {
@@ -79,6 +146,16 @@ function ItemDetailScreen() {
 
     return (
         <View style={stylesItem.main}>
+            <TouchableOpacity onPress={handleToggleFavorite}>
+                <Image
+                    source={
+                        isFav
+                            ? require('../../../../assets/icons/starMarked.png')
+                            : require('../../../../assets/icons/star.png')
+                    }
+                    style={stylesDetails.favIcon}
+                />
+            </TouchableOpacity>
             <Header
                 imageSource={require("../../../../assets/icons/back_icon.png")}
                 screenTitle={item.nombre}
@@ -91,7 +168,6 @@ function ItemDetailScreen() {
                         style={{
                             width: "100%",
                             aspectRatio: 1,
-                            borderRadius: 8,
                         }}
                     />
                 </View>
@@ -115,7 +191,7 @@ function ItemDetailScreen() {
                         renderItem={({ item: mat }) => (
                             <View style={stylesDetails.materialContainer}>
                                 <Text style={stylesDetails.materialDataText}>{mat.materialNombre}</Text>
-                                <Text style={stylesDetails.materialDataText}>{mat.cantidad}</Text>
+                                <Text style={stylesDetails.materialDataText}>x {mat.cantidad}</Text>
                             </View>
                         )}
                     />

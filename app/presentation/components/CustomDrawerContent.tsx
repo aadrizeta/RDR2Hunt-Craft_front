@@ -33,21 +33,28 @@ const CustomDrawerContent = (props)=>{
                                     style={styles.iconNavbar}
                                 />
                                 <Text style={{
-                                    color: colors.textDefault
+                                    color: colors.textDefault,
+                                    fontFamily: 'UIFontDefault'
                                 }}>
                                     {item.title}
                                 </Text>
                             </View>
-                            {menuIndex === index && <View style={{borderRadius: constant.borderRadius}} >
+                            {menuIndex === index && <View style={{borderRadius: constant.borderRadius, marginTop: 10}} >
                                 {item.menuList.map((sumMenu, index) => (
                                         <TouchableNativeFeedback
                                             key={index}
                                             onPress={() => navigation.navigate("Items", { category: sumMenu.title, id: sumMenu.id })}
                                         >
                                             <View style={styles.subMenu}>
+                                                <Image
+                                                    source={sumMenu.iconPath}
+                                                    style={styles.iconNavbar}
+                                                />
                                                 <Text
                                                     style={{
                                                         color: colors.textDefault,
+                                                        fontFamily: 'UIFontDefault',
+                                                        paddingTop: 5
                                                 }}
                                                 >{sumMenu.title}</Text>
                                             </View>
@@ -92,7 +99,9 @@ const styles = StyleSheet.create({
         paddingTop: 10, // Ajusta el espacio si es necesario
     },
     subMenu: {
-        paddingHorizontal: constant.SPACING,
+        flexDirection: 'row',
+        marginHorizontal: 25,
+        gap: 10,
         paddingVertical: constant.SPACING / 1.5,
     },
     menu: {

@@ -7,10 +7,13 @@ const stylesItem = StyleSheet.create({
         flex: 1
     },
     scrollView :{
-        marginHorizontal: 20
+        marginHorizontal: 20,
+        fontFamily: 'UIFontDefault',
+        marginBottom: 10
     },
     text: {
         color: colors.textDefault,
+        fontFamily: 'UIFontDefault'
     }
 
 })

@@ -8,6 +8,7 @@ import {useEffect, useState} from "react";
 import ItemsScreen from "./app/presentation/views/Items/ItemsScreen";
 import DrawerNavigator from "./app/presentation/navigation/DrawerNavigator";
 import ItemDetailScreen from "./app/presentation/views/Items/ItemDetailScreen";
+import OutfitScreen from "./app/presentation/views/Outfits/OutfitScreen";
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
@@ -43,7 +44,8 @@ export default function App() {
             <Stack.Screen name={"DrawerNavigator"} component={DrawerNavigator}/>
             <Stack.Screen name={"Home"} component={HomeScreen}/>
             <Stack.Screen name={"Items"} component={ItemsScreen}/>
-            <Stack.Screen name={"ItemDetail"} component={ItemDetailScreen} />
+            <Stack.Screen name={"ItemDetail"} component={ItemDetailScreen}/>
+            <Stack.Screen name={"Outfits"} component={OutfitScreen}/>
         </Stack.Navigator>
     </NavigationContainer>
   );

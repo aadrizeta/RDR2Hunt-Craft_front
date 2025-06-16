@@ -30,17 +30,20 @@ const styles = StyleSheet.create({
         alignItems: "center",
         paddingVertical: 12,
         paddingHorizontal: 16,
-        borderBottomWidth: 1,
+        borderBottomWidth: 5,
+        borderBottomColor: colors.icons,
         backgroundColor: colors.secondaryColor, // Beige claro como fondo del menú
+        marginVertical: 5,
     },
     name: {
         fontSize: 16,
         color: colors.textDefault, // Color oscuro para contraste
+        fontFamily: 'UIFontDefault'
     },
     price: {
         fontSize: 18,
-        fontWeight: "bold",
         color: colors.yellowRDR2, // Color del precio similar al original
+        fontFamily: 'UIFontBold'
     },
 });
 
