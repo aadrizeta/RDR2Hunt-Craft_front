@@ -44,20 +44,22 @@ const MaterialStyles = StyleSheet.create({
         justifyContent: "space-between"
     },
     materialText: {
-      fontFamily: 'UIFontDefault',
-      color: colors.textDefault,
-      fontSize: 14,
+        fontFamily: 'UIFontDefault',
+        color: colors.textDefault,
+        fontSize: 14,
     },
     materialContainer: {
         marginTop: 10,
         marginHorizontal: 5,
         paddingHorizontal: 15,
-        paddingTop: 5,
-        height: 35,
+        paddingVertical: 5,
+        height: 40,
         borderBottomWidth: 1,
         justifyContent: "space-between",
-        alignContent: "center",
         flexDirection: "row",
-    }
+        alignItems: "center"
+    },
+    checkbox: {
+    },
 })
 export default MaterialStyles;

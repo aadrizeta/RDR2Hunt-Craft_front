@@ -44,6 +44,13 @@ const stylesDetails = StyleSheet.create({
         fontFamily: 'UIFontItalic',
         fontSize: 15,
         color: colors.textDefault,
+        alignSelf: "center",
+    },
+    materialDataTextActive: {
+        fontFamily: 'UIFontItalic',
+        fontSize: 15,
+        color: colors.avaliable,
+        alignSelf: "center",
     },
     materialContainer: {
         height: 50,
@@ -65,6 +72,27 @@ const stylesDetails = StyleSheet.create({
         top: 55,
         width: 30,
         height: 30,
+    },
+    craftButtonEnable: {
+        backgroundColor: colors.yellowRDR2,
+        padding: 15,
+        width: "40%",
+        borderRadius: 8,
+        alignSelf: "center",
+        marginTop: 10,
+    },
+    craftButtonDisable:{
+        backgroundColor: colors.inactive,
+        padding: 15,
+        width: "40%",
+        borderRadius: 8,
+        alignSelf: "center",
+        marginTop: 10,
+    },
+    craftButtonText: {
+        textAlign: "center",
+        fontSize: 18,
+        fontFamily: 'UIFontItalicBold',
     }
 })
 

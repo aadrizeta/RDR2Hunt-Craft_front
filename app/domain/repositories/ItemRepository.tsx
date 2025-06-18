@@ -1,10 +1,9 @@
 import {
     ItemInterface,
-    MaterialInterface,
-    ItemMaterialInterface,
     TipoInterface,
     OutfitInterface,
 } from "../entitities/Item";
+import {MaterialInterface} from "../entitities/Material";
 
 export interface ItemRepository{
     getAllItems: ()=> Promise<ItemInterface[]>
