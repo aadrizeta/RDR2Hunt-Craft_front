@@ -20,24 +20,24 @@ function Home(){
                   <Image source={require('../../../../assets/icons/menu.png')} style={stylesHome.menuIcon}/>
               </TouchableOpacity>
               <Image source={require('../../../../assets/icons/appLogo.png')} style={stylesHome.appIcon}/>
-              <Image source={require('../../../../assets/icons/userIcon(1).png')} style={stylesHome.userIcon}/>
+              <Image source={require('../../../../assets/icons/icon.png')} style={stylesHome.userIcon}/>
           </View>
           <ScrollView contentContainerStyle={stylesHome.scrollContainer}>
               <HomeContentBox
-                  imageSource={require('../../../../assets/pictures/trapper.jpg')}
-                  title="The Ultimate Trapper's Guide"
+                  imageSource={require('../../../../assets/pictures/arrow.png')}
+                  title="The Ultimate Hunting Guide"
                   description="Your go-to companion for everything related to the trapper in Red Dead Redemption 2.
                   Discover craftable items, manage materials, and track your favorite outfits in one place."
               />
               <HomeContentBoxReversed
-                  imageSource={require('../../../../assets/pictures/trapper.jpg')}
+                  imageSource={require('../../../../assets/pictures/crafting.png')}
                   title="Craftable Items"
                   description="Browse a complete list of craftable items available at the trapper, including hats, vests, gloves, and more."
               />
               <HomeContentBox
-                  imageSource={require('../../../../assets/pictures/trapper.jpg')}
+                  imageSource={require('../../../../assets/pictures/hunting.png')}
                   title="Required Materials"
-                  description="See what materials you need to craft each item, including rare pelts and special components."
+                  description="All you need to know to craft each item, including rare pelts and special components."
               />
               <HomeContentBoxReversed
                   imageSource={require('../../../../assets/pictures/trapper.jpg')}
@@ -45,7 +45,7 @@ function Home(){
                   description="Explore all trapper outfits in Red Dead Redemption 2 and see what it takes to complete each set."
               />
               <HomeContentBox
-                  imageSource={require('../../../../assets/pictures/trapper.jpg')}
+                  imageSource={require('../../../../assets/pictures/favorites.png')}
                   title="Favorites"
                   description="Mark your favorite outfits and items to easily track your personal collection and goals."
               />

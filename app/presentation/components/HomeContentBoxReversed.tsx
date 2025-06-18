@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     description: {
         color: colors.textDefault,
         fontSize: 14,
-        fontFamily: 'RDR2Font'
+        fontFamily: 'UIFontDefault'
 
     },
 });

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const ApiDelivery = axios.create({
-    baseURL: "http://192.168.1.56:8080/api",
+    baseURL: "http://rdr2-h-c-back2-production.up.railway.app/api",
     headers: {
         "Content-Type": "application/json",
     },

@@ -2,18 +2,8 @@ import React, {useEffect, useState} from "react";
 import {ItemInterface, OutfitInterface} from "../../domain/entitities/Item";
 import {AxiosError} from "axios";
 import {ApiDelivery} from "../../data/sources/remote/api/ApiDelivery";
-import {
-    Image,
-    LayoutAnimation,
-    Platform,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    UIManager,
-    View
+import {Image, LayoutAnimation, Platform, StyleSheet, Text, TouchableOpacity, UIManager, View
 } from "react-native";
-import stylesItem from "../views/Items/Styles";
 import ItemContainer from "./ItemContainer";
 import colors from "../../../assets/colors/colors";
 import {useFocusEffect, useNavigation} from "@react-navigation/native";
@@ -62,7 +52,7 @@ const OutfitDropdown: React.FC<Props> = ({ outfits,  }) => {
     return (
         <View>
             {outfits.map((outfit) => (
-                <View style={styles.outfitContainer}>
+                <View key={outfit.id} style={styles.outfitContainer}>
                     <TouchableOpacity onPress={() => toggleOutfit(outfit.id)}>
                         <Text style={styles.name}>{outfit.nombre}</Text>
                     </TouchableOpacity>

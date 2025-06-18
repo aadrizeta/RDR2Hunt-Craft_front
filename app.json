@@ -1,32 +1,38 @@
 {
   "expo": {
-    "name": "TFGfrontend",
-    "slug": "TFGfrontend",
+    "name": "RDR2 Hunt & Craft",
+    "slug": "rdr2-hunt-craft",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/pictures.icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./assets/icons/icon.png",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/pictures/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#323232"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/pictures/adaptive-icon.png",
+        "backgroundColor": "#323232"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.anonymous.RDR2HuntCraft"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "87af0ba2-410e-4a69-b162-ba60ca260eab"
+      }
+    }
   }
 }
